@@ -1,0 +1,68 @@
+Unit 5 - Machine Learning Algorithms 
+Syllabus:
+Classification and Regression algorithms- Naïve Bayes, K-Nearest Neighbors, logistic regression, support vector machines (SVM), decision trees, and random forest, 
+Classification Errors, 
+Analysis of Time Series- Linear Systems Analysis, Nonlinear Dynamics, Rule Induction, 
+Neural Networks- Learning And Generalization, Overview of Deep Learning.
+
+5.1 Classification and Regression algorithms- Naïve Bayes, K-Nearest Neighbors, logistic regression, support vector machines (SVM), decision trees, and random forest
+Classification vs Regression
+Supervised learning can be furthered categorized into classification and regression algorithms. Classification model identifies which category an object belongs to whereas regression model predicts a continuous output.
+
+Sometimes there is an ambiguous line between classification algorithms and regression algorithms. Many algorithms can be used for both classification and regression, and classification is just regression model with a threshold applied. When the number is higher than the threshold it is classified as true while lower classified as false.
+
+1. Naive Bayes
+
+Fig. 5.1 naive bayes
+Naive Bayes is based on Bayes’ Theorem — an approach to calculate conditional probability based on prior knowledge, and the naive assumption that each feature is independent to each other. The biggest advantage of Naive Bayes is that, while most machine learning algorithms rely on large amount of training data, it performs relatively well even when the training data size is small. Gaussian Naive Bayes is a type of Naive Bayes classifier that follows the normal distribution.
+from sklearn.naive_bayes import GaussianNB
+gnb = KNeighborsClassifier()
+gnb.fit(X_train, y_train)
+y_pred = gnb.predict(X_test)
+
+2. K-Nearest Neighbour (KNN)
+
+Fig. 5.2 KNN
+You can think of k nearest neighbour algorithm as representing each data point in a n dimensional space — which is defined by n features. And it calculates the distance between one point to another, then assign the label of unobserved data based on the labels of nearest observed data points. KNN can also be used for building recommendation system.
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier()
+knn.fit(X_train, y_train)
+y_pred = knn.predict(X_test)
+
+3. Logistic Regression
+
+Fig. 5.3 Logistic regression
+Logistics regression uses sigmoid function above to return the probability of a label. It is widely used when the classification problem is binary — true or false, win or lose, positive or negative.
+The sigmoid function generates a probability output. By comparing the probability with a pre-defined threshold, the object is assigned to a label accordingly. 
+Below is the code snippet for a default logistic regression 
+from sklearn.linear_model import LogisticRegression
+reg = LogisticRegression()
+reg.fit(X_train, y_train)
+y_pred = reg.predict(X_test)
+
+4. Support Vector Machine (SVM)
+
+Fig. 5.4 Support Vector Machine
+Support vector machine finds the best way to classify the data based on the position in relation to a border between positive class and negative class. This border is known as the hyperplane which maximize the distance between data points from different classes. Similar to decision tree and random forest, support vector machine can be used in both classification and regression, SVC (support vector classifier) is for classification problem.
+from sklearn.svm import SVC
+svc = SVC()
+svc.fit(X_train, y_train)
+y_pred = svc.predict(X_test)
+
+5. Decision Tree
+
+Fig. 5.5 Decision tree
+Decision tree builds tree branches in a hierarchy approach and each branch can be considered as an if-else statement. The branches develop by partitioning the dataset into subsets based on most important features. Final classification happens at the leaves of the decision tree.
+from sklearn.tree import DecisionTreeClassifier
+dtc = DecisionTreeClassifier()
+dtc.fit(X_train, y_train)
+y_pred = dtc.predict(X_test)
+
+6. Random Forest
+
+Fig. 5.6 Random forest
+As the name suggest, random forest is a collection of decision trees. It is a common type of ensemble methods which aggregate results from multiple predictors. Random forest additionally utilizes bagging technique that allows each tree trained on a random sampling of original dataset and takes the majority vote from trees. Compared to decision tree, it has better generalization but less interpretable, because of more layers added to the model.
+from sklearn.ensemble import RandomForestClassifier
+rfc = RandomForestClassifier()
+rfc.fit(X_train, y_train)
+y_pred = rfc.predict(X_test)
